@@ -42,7 +42,7 @@ class _PeopleScreenState extends State<PeopleScreen> {
   }
 
   Future<PeopleResponse> getPeople() async {
-    final response = await http.get(Uri.parse('https://swapi.dev/api/people'));
+    final response = await http.get(Uri.parse('https://swapi.tech/api/people'));
 
     if (response.statusCode == 200) {
       return PeopleResponse.fromJson(response.body);
