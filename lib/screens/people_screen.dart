@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:listaprofesional/models/people_response/people_response.dart';
+import 'package:listaprofesional/screens/people_detail_screen.dart';
 import 'package:http/http.dart' as http;
 
 class PeopleScreen extends StatefulWidget {
@@ -86,14 +87,21 @@ class _PeopleScreenState extends State<PeopleScreen> {
               subtitle: Text(
                 'Height: ${character.height ?? 'N/A'} cm\n'
                 'Mass: ${character.mass ?? 'N/A'} kg\n'
-                'Hair Color: ${character.hairColor ?? 'N/A'}\n'
-                'Skin Color: ${character.skinColor ?? 'N/A'}\n'
-                'Eye Color: ${character.eyeColor ?? 'N/A'}\n'
-                'Birth Year: ${character.birthYear ?? 'N/A'}\n'
-                'Gender: ${character.gender ?? 'N/A'}',
+                'Hair Color: ${character.hairColor ?? 'N/A'}',
                 style: const TextStyle(fontSize: 14),
               ),
-              trailing: const Icon(Icons.more_vert),
+              trailing: const Icon(Icons.arrow_forward),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => PeopleDetailScreen(
+                      peopleItem: character,
+                      imageUrl: imageUrl,
+                    ),
+                  ),
+                );
+              },
             ),
           ),
         );
